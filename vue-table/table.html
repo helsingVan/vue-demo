@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="./table.css">
+	<script src="../lib/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div class="table-demo container" id="app">
+		<div class="row table-search">
+			<h1>vue-table小样例</h1>
+		</div>
+		<div class="row">
+			<table class="my-table table table-bordered">
+				<thead>
+					<tr>
+						<th class="list" 
+						@click="sort"
+						:class="{'top':isTop,'down':!isTop}"
+						>任务ID</th>
+						<th class="list">内容</th>
+						<th class="list">依赖文件</th>
+						<th class="list">完成时间</th>
+						<th class="list">耗时</th>
+						<th class="status" 
+						:class="{'open':isSetstatus}" @click="setStatus">
+							状态（{{statusName}}）
+							<ul class="slidedown">
+								<li @click="filterComplete('全部')">全部</li>
+								<li @click="filterComplete('完成')">完成</li>
+								<li @click="filterComplete('失败')">失败</li>
+								<li @click="filterComplete('进行中')">进行中</li>
+							</ul>
+						</th>
+						<th class="list">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item,index) in tableData">
+						<td>{{item.id}}</td>
+						<td>{{item.content}}</td>
+						<td>{{item.document}}</td>
+						<td>{{item.completeTime | conTimeFormat}}</td>
+						<td>{{item.time | timeFormat}}</td>
+						<td :class="{'red':item.status==='失败','green':item.status==='完成','orange':item.status==='进行中'}">{{item.status}}</td>
+						<td v-if="item.status==='完成'">
+						<a href="##" @click="adminSet(1,index)">下载</a>
+						</td>
+						<td v-else-if="item.status==='进行中'">
+						<a href="##" @click="adminSet(2,index)">取消</a>
+						</td>
+						<td v-else="item.status==='失败'">
+						<a href="##" @click="adminSet(3,index)">重试</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="layer-box" :class="{'open':isLayer}">
+			<my-layer :message="layerMessage"></my-layer>
+		</div>
+	</div>
+	
+	<!-- 弹出框组件 -->
+	<script type="text/x-template" id="layer">
+		<div class="layer">
+			<h2>标题</h2>
+			<div class="content">
+				{{message.content}}
+			</div>
+			<div class="footer">
+				<template v-if="message.type==='onload'">
+					<a href="##" @click="closed">{{message.btn1}}</a>
+					<a href="##" @click="onload">{{message.btn2}}</a>
+				</template>
+				<template v-else-if="message.type==='cancel'">
+					<a href="##" @click="closed">{{message.btn1}}</a>
+					<a href="##" @click="cancel">{{message.btn2}}</a>
+				</template>
+				<template v-else>
+					<a href="##" @click="remove">{{message.btn1}}</a>
+					<a href="##" @click="reset">{{message.btn2}}</a>
+				</template>
+			</div>
+		</div>
+	</script>
+	<script src="./table.js"></script>
+</body>
+</html>
