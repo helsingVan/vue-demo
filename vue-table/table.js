@@ -56,11 +56,13 @@ var jsonObject = {
 
 // 全局注册的弹出框组件
 Vue.component('myLayer',{
+	// prop 接收数据
 	props: {
 		message: {
 			type: Object
 		}
 	},
+	// 组件的模板
 	template: '#layer',
 	methods: {
 		// 关闭弹出框
@@ -107,8 +109,8 @@ var app = new Vue({
 		statusName: '全部'
 	},
 	created: function(){
+		// jsonObject.body 为模拟的数据
 		this.tableData = jsonObject.body;
-		console.log(this.tableData);
 	},
 	filters: {
 		// 格式化时间
@@ -189,6 +191,7 @@ var app = new Vue({
 				newTableData.push(v);
 			});
 			if(this.isTop){
+				// 从大到小排序
 				for(var i=0;i<newTableData.length-1;i++){
 					for(var j=i+1;j<newTableData.length;j++){
 						if((newTableData[i]['id'] - newTableData[j]['id'])<0){
@@ -200,6 +203,7 @@ var app = new Vue({
 				}
 				this.isTop = false;
 			}else {
+				// 从小到大排序
 				for(var i=0;i<newTableData.length-1;i++){
 					for(var j=i+1;j<newTableData.length;j++){
 						if((newTableData[i]['id'] - newTableData[j]['id'])>0){
