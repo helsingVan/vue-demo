@@ -45,7 +45,8 @@
 						<td>{{item.document}}</td>
 						<td>{{item.completeTime | conTimeFormat}}</td>
 						<td>{{item.time | timeFormat}}</td>
-						<td :class="{'red':item.status==='失败','green':item.status==='完成','orange':item.status==='进行中'}">{{item.status}}</td>
+						<td :class="{'red':item.status==='失败','green':item.status==='完成'
+						,'orange':item.status==='进行中'}">{{item.status}}</td>
 						<td v-if="item.status==='完成'">
 						<a href="##" @click="adminSet(1,index)">下载</a>
 						</td>
@@ -64,7 +65,7 @@
 			<my-layer :message="layerMessage"></my-layer>
 		</div>
 	</div>
-	
+
 	<!-- 弹出框组件 -->
 	<script type="text/x-template" id="layer">
 		<div class="layer">
