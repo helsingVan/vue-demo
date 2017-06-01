@@ -9,8 +9,8 @@ var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var proxyMiddleware = require('http-proxy-middleware')
-var webpackConfig = require('./webpack.dev.conf')
+var proxyMiddleware = require('http-proxy-middleware')     // http协议代理
+var webpackConfig = require('./webpack.dev.conf')          // webpack 配置
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -22,6 +22,34 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 var compiler = webpack(webpackConfig)
+
+// add by fanguang 2017-06-01  模拟数据接口
+var appData = require('../data.json');
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+
+var appRouter = express.Router();
+appRouter.get('/seller',function(req,res) {
+  res.json({
+    state: 0,
+    body: seller
+  })
+})
+appRouter.get('/goods',function(req,res) {
+  res.json({
+    state: 0,
+    body: goods
+  })
+})
+appRouter.get('/ratings',function(req,res) {
+  res.json({
+    state: 0,
+    body: ratings
+  })
+})
+app.use('/api',appRouter)
+
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,

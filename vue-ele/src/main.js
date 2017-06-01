@@ -13,3 +13,8 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+// const myApp = new Vue({
+// 	el: '#app',
+// 	router,
+// 	render: h=>h(App)
+// }).$mount('#app');
