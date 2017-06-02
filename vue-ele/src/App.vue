@@ -18,16 +18,25 @@ import myHeader from './components/header/header';
 
 export default {
   name: 'app',
+  mounted: function() {
+    
+  },
   components: { myHeader }
 }
+
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+@import './assets/stylus/mixin.stylus'
+
 .ele-menu
   display: flex
   height: 40px
   line-height: 40px 
+  borderbottom-1px(#ddd)
   > a
     flex: 1
     text-align: center
+  > a.active
+    color: #f01414
 </style>

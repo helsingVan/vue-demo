@@ -1,0 +1,61 @@
+borderbottom-1px($color)
+  position: relative
+  &::after
+    position: absolute
+    display: block
+    content: ''
+    width: 100%
+    left: 0
+    bottom: 0
+    border-bottom: 1px solid $color
+    -webkit-transform: scaleY(.5)
+    transform: scaleY(.5)
+
+bordertop-1px($color)
+  position: relative
+  &::after
+    position: absolute
+    display: block
+    content: ''
+    width: 100%
+    left: 0
+    top: 0
+    border-bottom: 1px solid $color
+    -webkit-transform: scaleY(.5)
+    transform: scaleY(.5)
+
+borderleft-1px($color)
+  position: relative
+  &::after
+    position: absolute
+    display: block
+    content: ''
+    height: 100%
+    left: 0
+    top: 0
+    border-left: 1px solid $color
+    -webkit-transform: scaleY(.5)
+    transform: scaleY(.5)
+
+borderright-1px($color)
+  position: relative
+  &::after
+    position: absolute
+    display: block
+    content: ''
+    height: 100%
+    left: 0
+    right: 0
+    border-left: 1px solid $color
+    -webkit-transform: scaleY(.5)
+    transform: scaleY(.5)
+
+
+
+
+
+
+
+
+
+
