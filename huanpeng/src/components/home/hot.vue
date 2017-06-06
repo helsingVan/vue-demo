@@ -14,9 +14,10 @@
       	</div>
         
       </section>
-      <div class="checkmore">
+      <!-- <div class="checkmore">
       	<a href="##">加载更多</a>
-      </div>
+      </div> -->
+      <load-more :load-more="loadMore"></load-more>
   	</div>
   </transition>
   
@@ -24,10 +25,11 @@
 
 <script>
 import videoList from '../video/videolist';
+import loadMore from '../funcbutton/loadmore';
 
 export default {
   name: 'hot',
-  components: { videoList },
+  components: { videoList,loadMore },
   data() {
   	return {
   	  isShow: false,
@@ -41,7 +43,10 @@ export default {
   	hide: function() {
   	  this.isShow = false;
   	  this.$emit('back');
-  	}
+  	},
+    loadMore: function() {
+      alert('******加载更多成功*******');
+    }
   }
 }
 </script>

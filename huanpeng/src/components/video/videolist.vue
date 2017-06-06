@@ -6,10 +6,14 @@
 	  	 <i class="fa fa-gamepad"></i>
 	  	 <span class="title">王者荣耀</span>
 	   </h2>
-	   <a href="##" class="more right">
+	   <!-- <a href="##" class="more right" @click="toHomeMore">
 	  	 <span>更多</span>
 	  	 <i class="fa fa-chevron-circle-right"></i>
-	   </a>
+	   </a> -->
+     <router-link class="more right" to="/home-more">
+       <span>更多</span>
+       <i class="fa fa-chevron-circle-right"></i>
+     </router-link>
 	 </header>
 	 <ul class="home-video clearfix">
 	   <li v-for="n in 4">
@@ -40,6 +44,12 @@ export default {
   	haveTitle: {
   	  type: Boolean
   	}
+  },
+  methods: {
+    toHomeMore: function() {
+      alert(1);
+      window.location.href = '/game';
+    }
   }
 }
 </script>

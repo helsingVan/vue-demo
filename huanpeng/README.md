@@ -1,6 +1,6 @@
 # huanpeng
 
-> huan peng zhi bo
+> A Vue.js project
 
 ## Build Setup
 

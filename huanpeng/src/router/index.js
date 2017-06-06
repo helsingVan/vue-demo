@@ -6,6 +6,7 @@ import Classify from '@/components/classify/classify'
 import Game from '@/components/game/game'
 import Search from '@/components/search/search'
 import Hot from '@/components/home/hot'
+import HomeMore from '@/components/home/home-more'
 
 Vue.use(Router)
 
@@ -35,11 +36,11 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: Search
+    },
+    {
+      path: '/home-more',
+      name: 'homeMore',
+      component: HomeMore
     }
-    // {
-    //   path: '/hot',
-    //   name: 'hot',
-    //   component: Hot
-    // }
   ]
 })

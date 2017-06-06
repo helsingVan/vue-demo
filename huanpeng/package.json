@@ -1,7 +1,7 @@
 {
   "name": "huanpeng",
   "version": "1.0.0",
-  "description": "huan peng zhi bo",
+  "description": "A Vue.js project",
   "author": "helsingvan <it.fan@foxmail.com>",
   "private": true,
   "scripts": {
