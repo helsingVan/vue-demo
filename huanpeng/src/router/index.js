@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
+// import Vuex from 'vuex'
+
 import Home from '@/components/home/home'
 import Classify from '@/components/classify/classify'
 import Game from '@/components/game/game'
@@ -9,6 +10,7 @@ import Hot from '@/components/home/hot'
 import HomeMore from '@/components/home/home-more'
 
 Vue.use(Router)
+// Vue.use(Vuex)
 
 export default new Router({
   linkActiveClass: 'active',

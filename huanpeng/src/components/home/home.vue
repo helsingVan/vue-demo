@@ -9,7 +9,9 @@
 	  	  </div>
 	  	</section>
 	  	<article class="home-content">
-	  	  <video-list :have-title="haveTitle"></video-list>
+	  	  <video-list :have-title="haveTitle">
+           <p>视频内容  </p>
+        </video-list>
 	  	  <div class="refresh">
 	  	  	<div class="control">
 	  	  	  <i class="fa fa-refresh"></i>
@@ -27,7 +29,8 @@
 <script>
 import Carousel from '../carousel/carousel';
 import videoList from '../video/videolist';
-import Hot from './hot'
+import Hot from './hot';
+// import store from '../../assets/js/store';
 
 export default {
   name: 'home',
@@ -41,6 +44,9 @@ export default {
   	  isHot: false,
   	  haveTitle: true
   	}
+  },
+  mounted: function() {
+    console.log(this.$store.state.info);
   },
   methods: {
   	toHot: function() {
